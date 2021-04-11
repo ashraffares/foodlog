@@ -12,7 +12,11 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
-    @entry = Entry.new
+    #@entry = Entry.new
+    @entry = current_user.entry.build
+    puts "####################33"
+    puts @entry.inspect
+    puts "####################33"
   end
 
   # GET /entries/1/edit
@@ -21,9 +25,10 @@ class EntriesController < ApplicationController
 
   # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params)
-    @entry.user_id = current_user.id
-
+    @entry = current_user.entry.build(entry_params)
+    @entry.id = 1
+    puts "_______________________________"
+    puts @entry.inspect
     respond_to do |format|
       if @entry.save
         format.html { redirect_to @entry, notice: "Entry was successfully created." }

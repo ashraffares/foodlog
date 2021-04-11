@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <%= link_to 'sing_out', destroy_user_session_path,method: :delete %>
+    <%= link_to 'SingIn', new_user_session_path %>
+    <%= link_to 'SingUp', new_user_registration_path %>
+    <<%= link_to 'EditProfile', edit_user_registration_path %>>
     <%= yield %>
   </body>
 </html>
