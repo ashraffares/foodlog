@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit update destroy]
 
   # GET /entries or /entries.json
   def index
@@ -55,6 +56,11 @@ class EntriesController < ApplicationController
       format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+    @entry = current_user.entry.find_by(id: params[:id])
+    redirect_to root_path, notice: 'Not Authorized To Edit This entry' if @entry.nil?
   end
 
   private
