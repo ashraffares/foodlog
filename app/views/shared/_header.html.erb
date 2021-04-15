@@ -1,0 +1,55 @@
+<section class="hero is-link is-small">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+          </a>
+          <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <%if user_signed_in?%>
+                <span class="navbar-item">
+                <%= link_to 'NewEntry', new_entry_path,class: 'button is-success' %>
+                </span>
+                <span class="navbar-item">
+                <%= link_to 'EditProfile', edit_user_registration_path,class: 'button is-success'%>
+                </span>
+                <span class="navbar-item">
+                <%= link_to 'sing_out', destroy_user_session_path,method: :delete,class:'button is-light' %>
+                </span>
+            <%else%>
+                <span class="navbar-item">
+                <%= link_to 'SingIn', new_user_session_path,class: 'button is-success' %>
+                </span>
+                <span class="navbar-item">
+                <%= link_to 'SingUp', new_user_registration_path,class: 'button is-primary'%>
+                </span>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        <%if content_for(:title)%>
+            <%= yield :title%>
+        <%else%>    
+            FoodLog   
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+</section>

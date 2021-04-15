@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
   </head>
-  <body>
-  <section class="section">
-    <div class="container">
       <h1 class="title">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,10 +14,7 @@
   </head>
 
   <body>
-    <%= link_to 'sing_out', destroy_user_session_path,method: :delete %>
-    <%= link_to 'SingIn', new_user_session_path %>
-    <%= link_to 'SingUp', new_user_registration_path %>
-    <%= link_to 'EditProfile', edit_user_registration_path %>
+    <%= render "shared/header"%>
     <%if notice %>
       <p class="notification is-link is-light"><%= notice %></p>
     <%end%>
