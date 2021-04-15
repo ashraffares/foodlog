@@ -21,6 +21,8 @@
     <%= link_to 'SingIn', new_user_session_path %>
     <%= link_to 'SingUp', new_user_registration_path %>
     <%= link_to 'EditProfile', edit_user_registration_path %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
